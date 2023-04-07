@@ -1,23 +1,18 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios'
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
+import { getVans } from '../../getVans'
+
+export async function loader() {
+    return await getVans()
+}
 
 export default function Vans() {
-
-    const [vansData, setVansData] = useState([])
+    const vansData = useLoaderData()
     const [searchParams, setSearchParams] = useSearchParams()
-
     const typeFilter = searchParams.get('type')
 
     const filteredVans = typeFilter 
     ? vansData.filter(van => van.type === typeFilter)
     : vansData
-
-    useEffect(() => {
-        axios.get('/api/vans')
-            .then(response => setVansData(response.data.vans))
-            .catch(err => console.log(err))
-    }, [])
 
     const vansElements = filteredVans.map(van => {
         return  <div key={van.id} className='van-card'>
