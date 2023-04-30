@@ -1,20 +1,19 @@
-import axios from 'axios'
-import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
+import { getHostVans } from '../../api'
+import { requireAuth } from '../../utils'
+
+export async function loader({request}) {
+    await requireAuth(request)
+    return getHostVans()
+}
 
 export default function HostVans() {
-
-    const [hostVanList, setHostVanList] = useState([])
-
-    useEffect(() => {
-        axios.get('/api/host/vans')
-            .then(response => setHostVanList(response.data.vans))
-    },[])
-
+    const hostVanList = useLoaderData()
+    
     const hostVanElements = hostVanList.map(hostVan => {
         return <Link
-        to={hostVan.id}
-        key={hostVan.id}>
+        to={hostVan._id}
+        key={hostVan._id}>
             <div className='host-van-card'>
                 <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van' />
                 <div className='host-van-card-inner'>
@@ -31,13 +30,9 @@ export default function HostVans() {
     return (
         <section className='host-van-list'>
             <h1>Your listed vans</h1>
-            {hostVanList.length > 0 ? 
-                <div className='host-van-list-inner'>
-                    {hostVanElements}
-                </div>
-            :
-                <h2>Loading...</h2>
-            }
+            <div className='host-van-list-inner'>
+                {hostVanElements}
+            </div>
         </section>
     )
 }

@@ -1,5 +1,5 @@
 import { Link, useSearchParams, useLoaderData } from 'react-router-dom'
-import { getVans } from '../../getVans'
+import { getVans } from '../../api'
 
 export async function loader() {
     return await getVans()
@@ -15,8 +15,8 @@ export default function Vans() {
     : vansData
 
     const vansElements = filteredVans.map(van => {
-        return  <div key={van.id} className='van-card'>
-        <Link to={van.id} state={{
+        return  <div key={van._id} className='van-card'>
+        <Link to={van._id} state={{
             search: `${searchParams.toString()}`,
             type: typeFilter
         }}>

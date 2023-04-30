@@ -5,9 +5,7 @@ export default function Error() {
     console.log(error)
     return (
         <>
-            <h1>{error.defaultMessage}</h1>
-            <pre>{`${error.status} - ${error.text}`}</pre>
-            
+            <h1>{error.message}</h1>
         </>
     )
 }
