@@ -1,7 +1,8 @@
 import { RouterProvider, 
   createBrowserRouter, 
   createRoutesFromElements, 
-  Route } from 'react-router-dom'
+  Route,
+  Navigate } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Vans, {loader as VansLoader } from './pages/Vans/Vans'
@@ -20,32 +21,43 @@ import HostLayout from './components/HostLayout'
 import Error from './components/Error'
 import Login, {loader as loginMessageLoader, action as loginAction} from './pages/Login'
 import Register, {action as registerAction} from './pages/Register'
-import { requireAuth } from './utils'
+import useRegister from "./hooks/useRegister"
+import useLogin from './hooks/useLogin'
+import useHostVans from './hooks/useHostVans'
+import { useContext } from 'react'
+import { AuthContext } from './context/authContext'
 
-const router = createBrowserRouter(createRoutesFromElements(
+
+export default function App() {
+  const { user } = useContext(AuthContext)
+  const { register } = useRegister()
+  const { login } = useLogin()
+  const { getHostVans } = useHostVans()
+
+  const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
     <Route index element={<Home />} />
     <Route path='about' element={<About />} />
     <Route path='login' 
-    element={<Login />} 
+    element={!user ? <Login /> : <Navigate to="/host"/>} 
     loader={loginMessageLoader} 
-    action={loginAction} 
+    action={({request}) => loginAction(request, login)} 
     />
 
     <Route path='register'
-    element={<Register/>}
-    action={registerAction}
+    element={!user ? <Register/> : <Navigate to="/host"/>}
+    action={({request}) => registerAction(request, register)}
     />
 
     <Route path='vans' element={<Vans />} loader={VansLoader} errorElement={<Error />}/>
     <Route path='vans/:id' element={<VanDetail />} loader={VanDetailLoader}/>
     
-    <Route path='host' element={<HostLayout />}>
-      <Route index element={<HostDashboard />} loader={async  ({request}) => await requireAuth(request)}/>
-      <Route path='income' element={<HostIncome />} loader={async  ({request}) => await requireAuth(request)}/>
-      <Route path='reviews' element={<HostReviews />} loader={async  ({request}) => await requireAuth(request)}/>
-      <Route path='vans' element={<HostVans />} loader={ HostVansLoader }/>
-      <Route path='vans/:id' element={<HostVanDetail />} loader={ HostVanDetailLoader }>
+    <Route path='host' element={user ? <HostLayout /> : <Navigate to="/login?message=You must login first"/>}>
+      <Route index element={<HostDashboard />}/>
+      <Route path='income' element={<HostIncome />}/>
+      <Route path='reviews' element={<HostReviews />}/>
+      <Route path='vans' element={<HostVans />} loader={({request}) => HostVansLoader(request, getHostVans) }/>
+      <Route path='vans/:id' element={<HostVanDetail />} loader={({params}) => HostVanDetailLoader(params, getHostVans) }>
         <Route index element={<HostVanDescription />}/>
         <Route path='pricing' element={<HostVanPricing />}/>
         <Route path='photo' element={<HostVanPhoto />}/>
@@ -56,7 +68,6 @@ const router = createBrowserRouter(createRoutesFromElements(
   </Route>
 ))
 
-export default function App() {
   return (
     <RouterProvider router={router}/>
   )

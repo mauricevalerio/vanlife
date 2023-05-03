@@ -2,7 +2,9 @@ const Van = require("../models/vanModels")
 
 // GET - /api/host/vans
 const getHostVans = async (req, res) => {
-    const van = await Van.find({ hostId: "643c1c31884ba67c81fe46c1" })
+    const { user } = req
+
+    const van = await Van.find({ hostId: user })
     res.status(200).json(van)
 }
 

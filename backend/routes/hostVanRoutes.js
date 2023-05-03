@@ -6,7 +6,9 @@ const {
     getSingleHostVan,
     updateHostVan,
     deleteHostVan } = require("../controllers/hostVanControllers")
+const requireAuth = require("../middleware/requireAuth")
 
+router.use("/vans", requireAuth)
 router.route("/vans").get(getHostVans).post(postHostVan)
 router.route("/vans/:id").get(getSingleHostVan).put(updateHostVan).delete(deleteHostVan)
 

@@ -18,14 +18,16 @@ const hostSchema = mongoose.Schema({
 }, { timestamps: true })
 
 hostSchema.statics.register = async function (username, password, name) {
-    if (!username || !password || !name) {
-        throw new Error("Please fill out all fields")
-    }
+    if (!username) throw new Error("Username required.")
+
+    if (!password) throw new Error("Password required.")
+
+    if (!name) throw new Error("Name required.")
 
     const existsUsername = await this.findOne({ username })
 
     if (existsUsername) {
-        throw new Error("Username already exists")
+        throw new Error("Username already exists.")
     }
 
     const hashedPassword = await bcrypt.hash(password, await bcrypt.genSalt(10))
@@ -36,7 +38,7 @@ hostSchema.statics.register = async function (username, password, name) {
 
 hostSchema.statics.login = async function (username, password) {
     if (!username || !password) {
-        throw new Error("Please enter a username and password")
+        throw new Error("Please enter a username and password.")
     }
 
     const host = await this.findOne({ username })

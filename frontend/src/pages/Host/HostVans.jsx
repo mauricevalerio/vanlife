@@ -1,17 +1,15 @@
 import { Link, useLoaderData } from 'react-router-dom'
-import { getHostVans } from '../../api'
-import { requireAuth } from '../../utils'
 
-export async function loader({request}) {
-    await requireAuth(request)
+
+export async function loader(request, getHostVans) {
     return getHostVans()
 }
 
 export default function HostVans() {
     const hostVanList = useLoaderData()
     
-    const hostVanElements = hostVanList.map(hostVan => {
-        return <Link
+    const hostVanElements = hostVanList.map(hostVan => 
+        <Link
         to={hostVan._id}
         key={hostVan._id}>
             <div className='host-van-card'>
@@ -25,7 +23,7 @@ export default function HostVans() {
                 </div>
             </div>
         </Link>
-    })
+    )
 
     return (
         <section className='host-van-list'>

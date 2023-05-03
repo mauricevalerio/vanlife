@@ -21,6 +21,7 @@ const loginHost = async (req, res, next) => {
 // POST - /api/host/register
 const registerHost = async (req, res, next) => {
     try {
+        console.log(req.body)
         const { username, password, name } = req.body
         const registeredHost = await Host.register(username.toLowerCase(), password, name)
         const token = createToken(registeredHost._id)

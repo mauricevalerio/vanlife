@@ -1,16 +1,23 @@
 import { NavLink, Link } from 'react-router-dom'
-import LoginIcon from '../assets/login-icon.png'
+import { AuthContext } from '../context/authContext'
+import { useContext } from 'react'
+import useLogout from '../hooks/useLogout'
 
 export default function Header() {
+    const { user } = useContext(AuthContext)
+    const { logout } = useLogout()
+
     return (
         <header>
             <Link to='/' className='logo'><h1>#VANLIFE</h1></Link>
             <nav className='main'>
-                <NavLink 
+
+                {user && <NavLink 
                 to='host'
                 className={({isActive}) => isActive ? 'active-main-link' : null}
                 >Host
-                </NavLink>
+                </NavLink>}
+  
                 
                 <NavLink 
                 to='about'
@@ -24,11 +31,15 @@ export default function Header() {
                 >Vans
                 </NavLink>
 
-                <NavLink
+                {!user && <NavLink
                 to='login'
                 className={({isActive}) => isActive ? 'active-main-link' : null}>
-                <img src={LoginIcon} alt='Login Icon' className='login'/>
-                </NavLink>
+                Login
+                </NavLink>}
+
+                {user && <Link to="/" onClick={logout}>
+                    Logout
+                </Link>}
                 
             </nav>
         </header>

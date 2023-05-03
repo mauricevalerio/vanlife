@@ -297,6 +297,7 @@ div.host-van-list-inner {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  padding: 1em;
 }
 
 div.host-van-card {
@@ -362,7 +363,8 @@ div.host-van-card-inner span.van-type {
 }
 
 /******************* LOGIN PAGE ******************/
-h1.login {
+h1.login,
+h1.register {
   text-align: center;
   color: #161616;
   font-size: 2rem;
@@ -382,11 +384,13 @@ span.orange {
   color: #FF8C38;
 }
 
-form.login {
+form.login,
+form.register {
   padding: 1em;
 }
 
-form.login input {
+form.login input,
+form.register input {
   background: #FFFFFF;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px 6px 0px 0px;
@@ -397,15 +401,18 @@ form.login input {
   border: 1px solid #D1D5DB;
 }
 
-form.login input[type="text"] {
+form.login input[type="text"],
+form.register input[type="text"] {
   border-radius: 6px 6px 0px 0px;
 }
 
-form.login input[type="password"] {
+form.login input[type="password"],
+form.register input[type="password"] {
   border-radius: 0px 0px 6px 6px;
 }
 
-form.login button {
+form.login button,
+form.register button {
   margin-top: 1.25em;
   font-family: inherit;
   color: #FFF;
@@ -416,6 +423,7 @@ form.login button {
   padding: 1em 0;
   border-radius: 6px;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
 }
 
 button:disabled {
@@ -423,7 +431,8 @@ button:disabled {
   cursor: not-allowed;
 }
 
-p.login-error {
+p.login-error,
+p.register-error {
   text-align: center;
   color: red;
 }

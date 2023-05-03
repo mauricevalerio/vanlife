@@ -5,17 +5,16 @@ import {
     useActionData, 
     redirect,
     Link } from "react-router-dom"
-import { loginUser } from "../api"
 
 export function loader({request}) {
     return (new URL(request.url).searchParams.get("message"))
 }
 
-export async function action({request}) {
+export async function action(request, login) {
     try {
-        const login = await request.formData()
-        const formDataObj = Object.fromEntries(login)
-        await loginUser(formDataObj)
+        const loginUser = await request.formData()
+        const formDataObj = Object.fromEntries(loginUser)
+        await login(formDataObj)
         return redirect(`${new URL(request.url).searchParams.get("redirectTo") || "/host"}`)
     } catch(e) {
         return e.message
