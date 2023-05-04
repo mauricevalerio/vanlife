@@ -1,7 +1,6 @@
 import {  Link, useLocation, useLoaderData } from 'react-router-dom'
-import { getVans } from '../../api'
 
-export async function loader({ params }) {
+export async function loader(params, getVans) {
     try {
         return await getVans(params.id)
     } catch (e) {

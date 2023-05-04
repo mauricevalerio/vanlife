@@ -23,6 +23,7 @@ import Login, {loader as loginMessageLoader, action as loginAction} from './page
 import Register, {action as registerAction} from './pages/Register'
 import useRegister from "./hooks/useRegister"
 import useLogin from './hooks/useLogin'
+import useVans from './hooks/useVans'
 import useHostVans from './hooks/useHostVans'
 import { useContext } from 'react'
 import { AuthContext } from './context/authContext'
@@ -32,6 +33,7 @@ export default function App() {
   const { user } = useContext(AuthContext)
   const { register } = useRegister()
   const { login } = useLogin()
+  const { getVans } = useVans()
   const { getHostVans } = useHostVans()
 
   const router = createBrowserRouter(createRoutesFromElements(
@@ -49,8 +51,8 @@ export default function App() {
     action={({request}) => registerAction(request, register)}
     />
 
-    <Route path='vans' element={<Vans />} loader={VansLoader} errorElement={<Error />}/>
-    <Route path='vans/:id' element={<VanDetail />} loader={VanDetailLoader}/>
+    <Route path='vans' element={<Vans />} loader={() => VansLoader(getVans)} errorElement={<Error />}/>
+    <Route path='vans/:id' element={<VanDetail />} loader={({params}) => VanDetailLoader(params, getVans)}/>
     
     <Route path='host' element={user ? <HostLayout /> : <Navigate to="/login?message=You must login first"/>}>
       <Route index element={<HostDashboard />}/>
