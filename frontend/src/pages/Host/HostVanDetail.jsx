@@ -5,12 +5,6 @@ export async function loader(params, getHostVans) {
 }
 
 export default function HostVanDetail() {
-    const style = {
-        color: '#161616',
-        textDecoration: 'underline',
-        fontWeight: '600'
-    }
-
     const hostVan = useLoaderData()
     
     return (
@@ -34,23 +28,23 @@ export default function HostVanDetail() {
                 </div>
             </div>
 
-            <nav className='host-van-detail-nav'>
+            <nav>
                 <NavLink
                 to='.'
                 end
-                style={({isActive}) => isActive ? style : null}
+                className={({isActive}) => isActive ? 'active-link' : null}
                 >Details
                 </NavLink>
 
                 <NavLink
                 to='pricing'
-                style={({isActive}) => isActive ? style : null}
+                className={({isActive}) => isActive ? 'active-link' : null}
                 >Pricing
                 </NavLink>
                 
                 <NavLink
                 to='photo'
-                style={({isActive}) => isActive ? style : null}
+                className={({isActive}) => isActive ? 'active-link' : null}
                 >Photos
                 </NavLink>
             </nav>

@@ -11,9 +11,7 @@ import VanDetail, {loader as VanDetailLoader } from './pages/Vans/VanDetail'
 import Layout from './components/Layout'
 
 import HostLayout from './components/HostLayout'
-import HostDashboard from './pages/Host/Dashboard'
 import HostAddVan, {action as HostAddVanAction} from './pages/Host/AddVan'
-import HostReviews from './pages/Host/Reviews'
 import HostVans, {loader as HostVansLoader} from './pages/Host/HostVans'
 
 import HostVanDetail, {loader as HostVanDetailLoader} from './pages/Host/HostVanDetail'
@@ -59,13 +57,8 @@ export default function App() {
     <Route path='vans/:id' element={<VanDetail />} loader={({params}) => VanDetailLoader(params, getVans)}/>
     
     <Route path='host' element={user ? <HostLayout /> : <Navigate to="/login?message=You must login first"/>}>
-      <Route index element={<HostDashboard />}/>
+      <Route index element={<HostVans />} loader={({request}) => HostVansLoader(request, getHostVans)}/>
       <Route path='add-van' element={<HostAddVan />} action={({request}) => HostAddVanAction(request, postHostVans)}/>
-      <Route path='reviews' element={<HostReviews />}/>
-      <Route path='vans' 
-      element={<HostVans />} 
-      loader={({request}) => HostVansLoader(request, getHostVans)} 
-      />
       <Route path='vans/:id' element={<HostVanDetail />} loader={({params}) => HostVanDetailLoader(params, getHostVans) }>
         <Route index element={<HostVanDescription />}/>
         <Route path='pricing' element={<HostVanPricing />}/>

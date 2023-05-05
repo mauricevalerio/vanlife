@@ -2,7 +2,6 @@ import { NavLink, Link } from 'react-router-dom'
 import { AuthContext } from '../context/authContext'
 import { useContext } from 'react'
 import useLogout from '../hooks/useLogout'
-import './header.css'
 
 export default function Header() {
     const { user } = useContext(AuthContext)

@@ -28,11 +28,11 @@ export default function VanDetail() {
                     <img src={vanDetail.imageUrl} alt={`Image of ${vanDetail.name}`} className='van-image'/>
                     <span className={`van-type ${vanDetail.type}`}>{vanDetail.type}</span>
                     <h2 className='van-name'>{vanDetail.name}</h2>
-                    <p className='van-price'>
+                    <p className='van-detail-price'>
                         <span className='van-price-inner'>${vanDetail.price}
                         </span>/day
                     </p>
-                    <p>{vanDetail.description}</p>
+                    <p className='van-detail-description'>{vanDetail.description}</p>
                     <button className="link-button">Rent this van</button>
                 </div>
             </>}

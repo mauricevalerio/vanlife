@@ -43,11 +43,11 @@ export default function Vans() {
     }
     return (
         <section className='van'>
-            <h1 className='all-vans-header'>Explore our van options</h1>
+            <h1>Explore our van options</h1>
             <div className='filters'>
-                <button className={`filter simple ${typeFilter === 'simple' && 'selected'} type-filter`} onClick={() => handleFilter('type','simple')}>Simple</button>
-                <button className={`filter luxury ${typeFilter === 'luxury' && 'selected'} type-filter`} onClick={() => handleFilter('type','luxury')}>Luxury</button>
-                <button className={`filter rugged ${typeFilter === 'rugged' && 'selected'} type-filter`} onClick={() => handleFilter('type','rugged')}>Rugged</button>
+                <button className={`filter simple ${typeFilter === 'simple' && 'selected'}`} onClick={() => handleFilter('type','simple')}>Simple</button>
+                <button className={`filter luxury ${typeFilter === 'luxury' && 'selected'}`} onClick={() => handleFilter('type','luxury')}>Luxury</button>
+                <button className={`filter rugged ${typeFilter === 'rugged' && 'selected'}`} onClick={() => handleFilter('type','rugged')}>Rugged</button>
                 {typeFilter && <button className='filter clear-type-filter' onClick={() => handleFilter('type',null)}>Clear Filters</button>}
             </div>
             <div className='van-list'>
