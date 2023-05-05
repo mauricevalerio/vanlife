@@ -1,6 +1,5 @@
 import { Link, useLoaderData } from 'react-router-dom'
 
-
 export async function loader(request, getHostVans) {
     return getHostVans()
 }
@@ -15,10 +14,10 @@ export default function HostVans() {
             <div className='host-van-card'>
                 <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van' />
                 <div className='host-van-card-inner'>
-                    <h2 className='van-name'>{hostVan.name}</h2>
-                    <p className='van-price'>
-                        <span className='van-price-inner'>${hostVan.price}
-                        </span>/day
+                    <h3 className='host-van-name'>{hostVan.name}</h3>
+                    <p className='host-van-price'>
+                        ${hostVan.price}
+                        <span className='host-van-price-inner'>/day</span>
                     </p>
                 </div>
             </div>
@@ -26,9 +25,9 @@ export default function HostVans() {
     )
 
     return (
-        <section className='host-van-list'>
+        <section className='host-vans'>
             <h1>Your listed vans</h1>
-            <div className='host-van-list-inner'>
+            <div className='host-vans-inner'>
                 {hostVanElements}
             </div>
         </section>

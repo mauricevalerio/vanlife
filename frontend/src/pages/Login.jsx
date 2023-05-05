@@ -5,6 +5,7 @@ import {
     useActionData, 
     redirect,
     Link } from "react-router-dom"
+import "./login.css"
 
 export function loader({request}) {
     return (new URL(request.url).searchParams.get("message"))
@@ -28,18 +29,18 @@ export default function Login() {
     
     return (
         <>
-            <h1 className="login">Sign in to your account!</h1>
-            {errorMessage && <p className="login-error">{errorMessage}</p>}
-            {loginMessage && <h3 className="red">{loginMessage}</h3>}
-            <Form method="POST" autoComplete="off" className="login" replace>
+            <h1 className="form-header">Sign in to your account!</h1>
+            {errorMessage && <p className="error">{errorMessage}</p>}
+            {loginMessage && <h3 className="login-message">{loginMessage}</h3>}
+            <Form method="POST" autoComplete="off" replace>
 
                 <input type="text" name="username" placeholder="Username"/>
                 <input type="password" name="password" placeholder="Password"/>
 
                 <button disabled={navigation.state === "submitting" ? true : false}>Sign in</button>
             </Form>
-            <p className="login-CTA">Don't have an account? 
-            <Link to="/register"><span className="orange"> Create one now</span></Link> 
+            <p className="login-cta">Don't have an account? 
+            <Link to="/register"><span className="orange-cta"> Create one now</span></Link> 
             </p>
         </>
     )

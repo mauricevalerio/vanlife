@@ -3,21 +3,25 @@ import { RouterProvider,
   createRoutesFromElements, 
   Route,
   Navigate } from 'react-router-dom'
+
 import Home from './pages/Home'
 import About from './pages/About'
-import Vans, {loader as VansLoader } from './pages/Vans/Vans'
+import Vans, {loader as VansLoader} from './pages/Vans/Vans'
 import VanDetail, {loader as VanDetailLoader } from './pages/Vans/VanDetail'
 import Layout from './components/Layout'
+
+import HostLayout from './components/HostLayout'
 import HostDashboard from './pages/Host/Dashboard'
-import HostIncome from './pages/Host/Income'
+import HostAddVan, {action as HostAddVanAction} from './pages/Host/AddVan'
 import HostReviews from './pages/Host/Reviews'
 import HostVans, {loader as HostVansLoader} from './pages/Host/HostVans'
+
 import HostVanDetail, {loader as HostVanDetailLoader} from './pages/Host/HostVanDetail'
 import HostVanDescription from './pages/Host/HostVanDescription'
 import HostVanPricing from './pages/Host/HostVanPricing'
 import HostVanPhoto from './pages/Host/HostVanPhoto'
+
 import NotFound from './pages/NotFound'
-import HostLayout from './components/HostLayout'
 import Error from './components/Error'
 import Login, {loader as loginMessageLoader, action as loginAction} from './pages/Login'
 import Register, {action as registerAction} from './pages/Register'
@@ -34,7 +38,7 @@ export default function App() {
   const { register } = useRegister()
   const { login } = useLogin()
   const { getVans } = useVans()
-  const { getHostVans } = useHostVans()
+  const { getHostVans, postHostVans } = useHostVans()
 
   const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
@@ -56,9 +60,12 @@ export default function App() {
     
     <Route path='host' element={user ? <HostLayout /> : <Navigate to="/login?message=You must login first"/>}>
       <Route index element={<HostDashboard />}/>
-      <Route path='income' element={<HostIncome />}/>
+      <Route path='add-van' element={<HostAddVan />} action={({request}) => HostAddVanAction(request, postHostVans)}/>
       <Route path='reviews' element={<HostReviews />}/>
-      <Route path='vans' element={<HostVans />} loader={({request}) => HostVansLoader(request, getHostVans) }/>
+      <Route path='vans' 
+      element={<HostVans />} 
+      loader={({request}) => HostVansLoader(request, getHostVans)} 
+      />
       <Route path='vans/:id' element={<HostVanDetail />} loader={({params}) => HostVanDetailLoader(params, getHostVans) }>
         <Route index element={<HostVanDescription />}/>
         <Route path='pricing' element={<HostVanPricing />}/>

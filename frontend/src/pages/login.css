@@ -1,0 +1,14 @@
+/* See index.css for additional styling for login page */
+h3.login-message {
+    text-align: center;
+    color: #cc0000;
+}
+
+p.login-cta {
+    text-align: center;
+    font-weight: 500;
+}
+
+span.orange-cta {
+    color: #FF8C38;
+}

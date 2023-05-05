@@ -1,0 +1,21 @@
+img.about {
+    width: 100%;
+    display: block;
+}
+
+div.about-content {
+    padding: 1em;
+}
+
+div.about-cta {
+    background: #FFCC8D;
+    border-radius: 5px;
+    padding: 1em 2em;
+}
+
+a.explore-vans {
+    margin-top: 1em;
+    color: #FFFFFF;
+    background: #161616;
+    border-radius: 10px;
+}

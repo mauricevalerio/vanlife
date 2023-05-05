@@ -1,0 +1,12 @@
+section.home {
+    background: no-repeat center/cover url('../assets/home-background.png');
+    color: #FFFFFF;
+    padding: 2em 1em;
+}
+
+a.find-van {
+    color: inherit;
+    background: var(--primary-color);
+    border-radius: 5px;
+    width: 100%;
+}

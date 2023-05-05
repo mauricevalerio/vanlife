@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
+import "./hostLayout.css"
 
-//className does not work
 
 export default function HostNavbar() {
     const style = {
@@ -10,7 +10,7 @@ export default function HostNavbar() {
     }
     return (
         <>
-            <nav className='host'>
+            <nav>
                 <NavLink 
                 to='.'
                 end
@@ -19,15 +19,15 @@ export default function HostNavbar() {
                 </NavLink>
 
                 <NavLink 
-                to='income'
+                to='add-van'
                 style={({isActive}) => isActive ? style : null}
-                >Income
+                >Add Van
                 </NavLink>
 
                 <NavLink 
                 to='vans'
                 style={({isActive}) => isActive ? style : null}
-                >Vans
+                >Van List
                 </NavLink>
 
                 <NavLink 

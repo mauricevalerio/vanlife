@@ -10,7 +10,8 @@ const getHostVans = async (req, res) => {
 
 // POST - /api/host/vans
 const postHostVan = async (req, res, next) => {
-    const { name, price, description, imageUrl, type, hostId } = req.body
+    const { name, price, description, imageUrl, type } = req.body
+    const { user: userId } = req
     try {
         for (let key in req.body) {
             if (!req.body[key]) {
@@ -18,7 +19,7 @@ const postHostVan = async (req, res, next) => {
                 throw new Error(`Please add a ${key}`)
             }
         }
-        const van = await Van.create({ name, price, description, imageUrl, type, hostId })
+        const van = await Van.create({ name, price, description, imageUrl, type, hostId: userId })
         res.status(200).json({ van })
     } catch (e) {
         next(e)

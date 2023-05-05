@@ -18,9 +18,9 @@ export default function Register() {
 
     return (
         <>
-            <h1 className="register">Register your account!</h1>
-            {errorMessage && <p className="register-error">{errorMessage}</p>}
-            <Form method="POST" autoComplete="off" className="register" replace>
+            <h1 className="form-header">Register your account!</h1>
+            {errorMessage && <p className="error">{errorMessage}</p>}
+            <Form method="POST" autoComplete="off" replace>
                 <input type="text" name="username" placeholder="Username" />
                 <input type="password" name="password" placeholder="Password" />
                 <input type="text" name="name" placeholder="Your Name" />

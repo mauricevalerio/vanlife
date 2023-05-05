@@ -1,0 +1,15 @@
+section.page-not-found {
+    padding: 1em;
+}
+
+a.return-home-link {
+    border-radius: 4.98319px;
+    font-size: 1.125rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+    background: #161616;
+    color: #FFF;
+    padding: 1em;
+}

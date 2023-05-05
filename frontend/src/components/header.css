@@ -1,0 +1,37 @@
+a.logo {
+    color: #000000;
+}
+
+header,
+nav {
+    display: flex;
+    align-items: center;
+}
+
+header {
+    padding: 1em;
+    background: #FFF7ED;
+    justify-content: space-between;
+}
+
+nav {
+    margin-left: auto;
+    gap: 0.5em;
+}
+
+nav>a {
+    color: #4d4d4d;
+    font-weight: 600;
+}
+
+nav>a:hover {
+    color: #161616;
+    text-decoration: underline;
+    font-weight: 700;
+}
+
+a.active-link {
+    color: #161616;
+    text-decoration: underline;
+    font-weight: 700;
+}

@@ -25,7 +25,7 @@ export default function VanDetail() {
                     &larr; <span>{`Back to ${location.state.type ? location.state.type : 'all'} vans`}</span>
                 </Link>
                 <div className='van-detail-inner'>
-                    <img src={vanDetail.imageUrl} className='van-image'/>
+                    <img src={vanDetail.imageUrl} alt={`Image of ${vanDetail.name}`} className='van-image'/>
                     <span className={`van-type ${vanDetail.type}`}>{vanDetail.type}</span>
                     <h2 className='van-name'>{vanDetail.name}</h2>
                     <p className='van-price'>

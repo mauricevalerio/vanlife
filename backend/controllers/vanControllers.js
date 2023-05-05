@@ -3,6 +3,7 @@ const Van = require("../models/vanModels")
 // GET - /api/vans
 const getVans = async (req, res) => {
     try {
+        //filter by visibility
         const van = await Van.find()
         if (!van) {
             res.status(400)
