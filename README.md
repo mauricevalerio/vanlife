@@ -1,8 +1,8 @@
 ## Vanlife
 
-A web application to book and host vans for hire.
+A web application to add, delete, and view vans.
 
-Built with HTML, CSS, React, and React Router V6.
+Built using the MERN stack with basic authentication.
 
 ## Installation and Setup Instructions
 
