@@ -14,21 +14,20 @@ export default function Vans() {
     : vansData
 
     const vansElements = filteredVans.map(van => {
-        return  <div key={van._id} className='van-card'>
-        <Link to={van._id} state={{
+        return  <Link to={van._id} key={van._id} state={{
             search: `${searchParams.toString()}`,
             type: typeFilter
-        }}>
-            <img src={van.imageUrl} alt={`Image of ${van.name}`} className='van-image'/>
-            <div className='van-summary'>
-                <h2 className='van-name'>{van.name}</h2>
-                <p className='van-price'>
-                    <span className='van-price-inner'>${van.price}
+        }}><div  className='all-vans-card'>
+            <img src={van.imageUrl} alt={`Image of ${van.name}`} className='all-vans-image'/>
+            <div className='all-vans-info'>
+                <h2 className='all-vans-name'>{van.name}</h2>
+                <p className='all-vans-price'>
+                    <span className='all-vans-price-inner'>${van.price}
                     </span>/day
                 </p>
             </div>
-            <span className={`van-type ${van.type}`}>{van.type}</span>
-        </Link></div>
+            <span className={`all-vans-type ${van.type}`}>{van.type}</span>
+            </div></Link>
     })
 
     function handleFilter(key, value) {
@@ -42,7 +41,7 @@ export default function Vans() {
         })
     }
     return (
-        <section className='van'>
+        <section className='all-vans'>
             <h1>Explore our van options</h1>
             <div className='filters'>
                 <button className={`filter simple ${typeFilter === 'simple' && 'selected'}`} onClick={() => handleFilter('type','simple')}>Simple</button>

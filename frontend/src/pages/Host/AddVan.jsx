@@ -5,7 +5,7 @@ export async function action(request, postHostVans) {
         const hostVanData = await request.formData()
         const formDataObj = Object.fromEntries(hostVanData)
         await postHostVans(formDataObj)
-        return redirect('/host/vans')
+        return redirect('/host')
     } catch (e) {
         return e.message
     }

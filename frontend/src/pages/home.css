@@ -6,7 +6,7 @@ section.home {
 
 a.find-van {
     color: inherit;
-    background: var(--primary-color);
+    background: #FF8C38;
     border-radius: 5px;
     width: 100%;
 }

@@ -2,7 +2,6 @@
 
 :root {
   font-family: 'Inter', sans-serif;
-  --primary-color: #FF8C38;
 }
 
 *,
@@ -17,7 +16,7 @@ body {
   background: #FFF7ED;
 }
 
-/* Used by HOME & ABOUT page and VAN DETAIL PAGE */
+/* USED BY HOME & ABOUT PAGE & VAN DETAIL PAGE */
 .link-button {
   display: inline-block;
   font-family: inherit;
@@ -28,26 +27,21 @@ body {
   padding: 1em;
 }
 
-a {
-  text-decoration: none;
-}
-
-h1,
-h2,
-h3 {
-  margin: 0;
-}
-
-/* HOME & ABOUT TEXT CONTENT */
+/******************** HOME & ABOUT TEXT CONTENT *********/
 .general-text {
   font-weight: 500;
   line-height: 1.5;
   text-align: justify;
 }
 
-/* ALL NAV */
+/******************* ALL NAV *********************/
+a {
+  text-decoration: none;
+}
+
 a.logo {
   color: #000000;
+  font-size: 0.75rem;
 }
 
 header,
@@ -57,8 +51,7 @@ nav {
 }
 
 header {
-  padding: 1em;
-  background: #FFF7ED;
+  padding: 0 0.5em;
   justify-content: space-between;
 }
 
@@ -85,30 +78,12 @@ a.active-link {
   font-weight: 700;
 }
 
-/******************* ALL VANS / VAN DETAIL ******************/
-img.van-image {
-  display: block;
-  width: 100%;
-  border-radius: 10px;
-}
-
+/* USED BY ALL VANS & VAN DETAILS & HOST VAN DETAILS PAGES */
 span.van-type {
   display: inline-block;
   border-radius: 5px;
   color: #FFFFFF;
   padding: 0.75em;
-}
-
-h2.van-name,
-p.van-price {
-  line-height: 1.5;
-  color: #161616;
-  font-weight: 600;
-}
-
-span.van-price-inner {
-  font-weight: 700;
-  font-size: 1.5rem;
 }
 
 span.simple {
@@ -124,13 +99,13 @@ span.luxury {
 }
 
 /******************* ALL VANS ******************/
-section.van {
-  padding: 1em;
+section.all-vans {
+  padding: 0.5em;
 }
 
 div.filters {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   margin: 1em 0;
 }
 
@@ -144,7 +119,7 @@ button.filter {
   cursor: pointer;
   transition: all 0.25s linear;
   border-radius: 5px;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 button.simple:hover,
@@ -177,38 +152,93 @@ div.van-list {
   gap: 1em;
 }
 
-div.van-summary {
+div.all-vans-card {
+  border: 1px solid #FF8C38;
+  border-radius: 10px;
+}
+
+.all-vans-image {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+div.all-vans-info {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+div.all-vans-info,
+span.all-vans-type {
+  margin: 0 0.5em;
+}
+
+h2.all-vans-name,
+p.all-vans-price {
+  line-height: 1.5;
+  color: #161616;
+  font-weight: 600;
+}
+
+span.all-vans-price-inner {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+span.all-vans-type {
+  display: inline-block;
+  border-radius: 5px;
+  color: #FFFFFF;
+  padding: 1em;
+  margin: 0.5em;
+}
+
 /******************* VAN DETAIL ******************/
 section.van-detail {
-  padding: 0.75em;
+  padding: 0.5em;
 }
 
 div.van-detail-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  gap: 0.75em;
   color: #161616;
 }
 
-p.van-detail-price,
-p.van-detail-description {
-  margin: 0;
+.van-detail-image {
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+}
+
+span.van-detail-type {
+  display: inline-block;
+  border-radius: 5px;
+  color: #FFFFFF;
+  padding: 1em;
+  margin-top: 1em;
+}
+
+h2.van-detail-name,
+p.van-detail-price {
+  line-height: 1.5;
+  color: #161616;
+  font-weight: 600;
+}
+
+span.van-detail-price-inner {
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 p.van-detail-description {
   text-align: justify;
+  font-size: 1.125rem;
 }
 
-.van-detail-inner .link-button {
+.link-button {
   background-color: #FF8C38;
   color: white;
   font-size: 1.125rem;
+  border-radius: 5px;
 }
 
 /******************* HOST VAN LIST & HOST VAN DETAILS ******************/
