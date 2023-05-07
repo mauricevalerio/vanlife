@@ -1,7 +1,8 @@
-import { Link, useLoaderData } from 'react-router-dom'
+import { Link, useLoaderData, redirect } from 'react-router-dom'
 
-export async function loader(request, getHostVans) {
-    return getHostVans()
+export async function loader(user, getHostVans) {
+    if (!user) return redirect("/login?message=You must login first")
+    return await getHostVans()
 }
 
 export default function HostVans() {
@@ -9,26 +10,25 @@ export default function HostVans() {
     
     const hostVanElements = hostVanList.map(hostVan => 
         <Link
-        to={hostVan._id}
+        to={`vans/${hostVan._id}`}
         key={hostVan._id}>
             <div className='host-van-card'>
                 <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van' />
+                
                 <div className='host-van-card-inner'>
                     <h3 className='host-van-name'>{hostVan.name}</h3>
-                    <p className='host-van-price'>
+                    <span className='host-van-price'>
                         ${hostVan.price}
-                        <span className='host-van-price-inner'>/day</span>
-                    </p>
+                        <span className='day-text'>/day</span>
+                    </span>
                 </div>
             </div>
         </Link>
     )
 
     return (
-        <section className='host-vans'>
-            <div className='host-vans-inner'>
-                {hostVanElements}
-            </div>
-        </section>
+        <div className='host-van-cards-container'>
+            {hostVanElements}
+        </div>
     )
 }

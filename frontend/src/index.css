@@ -17,7 +17,7 @@ body {
   background: #FFF7ED;
 }
 
-/* Used by HOME & ABOUT page and another class */
+/* Used by HOME & ABOUT page and VAN DETAIL PAGE */
 .link-button {
   display: inline-block;
   font-family: inherit;
@@ -65,6 +65,7 @@ header {
 nav {
   margin-left: auto;
   gap: 0.5em;
+  padding: 0.5em 0;
 }
 
 nav>a {
@@ -95,7 +96,7 @@ span.van-type {
   display: inline-block;
   border-radius: 5px;
   color: #FFFFFF;
-  padding: 1em;
+  padding: 0.75em;
 }
 
 h2.van-name,
@@ -212,35 +213,43 @@ p.van-detail-description {
 
 /******************* HOST VAN LIST & HOST VAN DETAILS ******************/
 section.host-home {
-  padding: 1em;
+  padding: 0 1em;
 }
 
-section.host-vans {
-  padding: 0.5em 0;
+@media(width >=574px) {
+  div.host-van-detail-inner {
+    display: flex;
+  }
 }
 
-div.host-vans-inner {
-  padding: 0.5em 0;
+div.host-van-cards-container {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1em;
 }
 
 div.host-van-card {
+  position: relative;
   padding: 0.5em;
   background: #FFF;
   border-radius: 5px;
-  display: flex;
-  align-items: center;
-  gap: 0.25em;
 }
 
 img.host-van {
-  max-width: 75px;
+  max-width: 200px;
+  display: block;
+}
+
+div.host-van-card-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 h3.host-van-name,
-p.host-van-price {
+span.host-van-price,
+span.day-text {
+  display: inline-block;
   line-height: 1.5;
   color: #161616;
   font-weight: 600;
@@ -250,15 +259,11 @@ h3.host-van-name {
   font-size: 1.25rem;
 }
 
-span.host-van-price-inner {
-  font-size: 0.65rem;
+span.day-text {
+  font-size: 0.7rem;
 }
 
 /******************* HOST VAN DETAILS ******************/
-div.host-van-card-inner span.van-type {
-  padding: 0.5em;
-}
-
 .back-button {
   display: block;
   color: #161616;
@@ -267,6 +272,12 @@ div.host-van-card-inner span.van-type {
 
 .back-button span:hover {
   text-decoration: underline;
+}
+
+span.host-van-type {
+  position: absolute;
+  top: 0.5em;
+  right: 0.5em;
 }
 
 /******************* LOGIN / REGISTER / ADD VANS FORMS ******************/
@@ -279,6 +290,10 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.125em;
+}
+
+form.add-van {
+  padding: 1em 0;
 }
 
 form input,

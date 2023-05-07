@@ -14,7 +14,7 @@ export async function action(request, postHostVans) {
 export default function AddVan() {
     const errorMessage = useActionData()
     return (
-        <Form method='POST' replace>
+        <Form method='POST' replace className='add-van'>
             <input 
             type='text'
             name='name'

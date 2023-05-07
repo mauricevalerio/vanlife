@@ -37,11 +37,13 @@ export default function App() {
   const { login } = useLogin()
   const { getVans } = useVans()
   const { getHostVans, postHostVans } = useHostVans()
-
+  
   const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<Layout />}>
+
     <Route index element={<Home />} />
     <Route path='about' element={<About />} />
+
     <Route path='login' 
     element={!user ? <Login /> : <Navigate to="/host"/>} 
     loader={loginMessageLoader} 
@@ -56,14 +58,14 @@ export default function App() {
     <Route path='vans' element={<Vans />} loader={() => VansLoader(getVans)} errorElement={<Error />}/>
     <Route path='vans/:id' element={<VanDetail />} loader={({params}) => VanDetailLoader(params, getVans)}/>
     
-    <Route path='host' element={user ? <HostLayout /> : <Navigate to="/login?message=You must login first"/>}>
-      <Route index element={<HostVans />} loader={({request}) => HostVansLoader(request, getHostVans)}/>
-      <Route path='add-van' element={<HostAddVan />} action={({request}) => HostAddVanAction(request, postHostVans)}/>
-      <Route path='vans/:id' element={<HostVanDetail />} loader={({params}) => HostVanDetailLoader(params, getHostVans) }>
+    <Route path='host' element={<HostLayout />}>
+      <Route index element={<HostVans />} loader={() => HostVansLoader(user, getHostVans)}/>
+      <Route path='vans/:id' element={<HostVanDetail />} loader={({params}) => HostVanDetailLoader(params, user, getHostVans) }>
         <Route index element={<HostVanDescription />}/>
         <Route path='pricing' element={<HostVanPricing />}/>
         <Route path='photo' element={<HostVanPhoto />}/>
       </Route>
+      <Route path='add-van' element={<HostAddVan />} action={({request}) => HostAddVanAction(request, postHostVans)}/>
     </Route>
 
     <Route path='*' element={<NotFound />}/>
