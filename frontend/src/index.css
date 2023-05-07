@@ -241,67 +241,49 @@ p.van-detail-description {
   border-radius: 5px;
 }
 
-/******************* HOST VAN LIST & HOST VAN DETAILS ******************/
-section.host-home {
-  padding: 0 1em;
-}
-
-@media(width >=574px) {
-  section.host-van-detail {
-    display: flex;
-    gap: 1em;
-  }
-
-  .host-van-card,
-  .host-van-content {
-    flex: 1;
-  }
-
-  .host-van-detail-nav {
-    margin-left: unset;
-  }
-}
-
-div.host-van-cards-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding: 1em 0;
-}
-
-div.host-van-card {
-  position: relative;
-  padding: 0.5em;
-  background: #FFF;
-  border-radius: 5px;
-}
-
-img.host-van {
-  max-width: 200px;
-  display: block;
-}
-
-div.host-van-card-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-h3.host-van-name,
+/* USED BY HOST VAN LIST & HOST VAN DETAIL PAGES */
+h2.host-van-name,
 span.host-van-price,
 span.day-text {
   display: inline-block;
   line-height: 1.5;
   color: #161616;
-  font-weight: 600;
-}
-
-h3.host-van-name {
-  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 span.day-text {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+}
+
+/******************* HOST VAN LIST ******************/
+section.host-home {
+  padding: 0.5em;
+}
+
+div.host-van-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+div.host-van-card {
+  padding: 0.5em;
+  background: #FFF;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+
+.host-van-image {
+  width: 50%;
+}
+
+div.host-van-card-inner {
+  display: flex;
+  flex-direction: column;
 }
 
 /******************* HOST VAN DETAILS ******************/
@@ -313,6 +295,25 @@ span.day-text {
 
 .back-button span:hover {
   text-decoration: underline;
+}
+
+div.host-van-detail-card {
+  position: relative;
+  padding: 0.5em;
+  background: #FFF;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.host-van-detail-image {
+  width: 50%;
+}
+
+div.host-van-detail-card-inner {
+  display: flex;
+  flex-direction: column;
 }
 
 span.host-van-type {
@@ -334,7 +335,7 @@ form {
 }
 
 form.add-van {
-  padding: 1em 0;
+  padding: 0;
 }
 
 form input,

@@ -13,10 +13,10 @@ export default function HostVans() {
         to={`vans/${hostVan._id}`}
         key={hostVan._id}>
             <div className='host-van-card'>
-                <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van' />
+                <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van-image' />
                 
                 <div className='host-van-card-inner'>
-                    <h3 className='host-van-name'>{hostVan.name}</h3>
+                    <h2 className='host-van-name'>{hostVan.name}</h2>
                     <span className='host-van-price'>
                         ${hostVan.price}
                         <span className='day-text'>/day</span>

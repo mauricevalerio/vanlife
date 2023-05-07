@@ -10,21 +10,18 @@ export default function HostVanDetail() {
     
     return (
         <>
-        <Link
-        to='/host'
-        relative='path'
-        className='back-button'>
-        &larr; <span>Back to all vans</span>
-        </Link>
+            <Link
+            to='/host'
+            relative='path'
+            className='back-button'>
+            &larr; <span>Back to all vans</span>
+            </Link>
 
-        
-        <section className='host-van-detail'>
-
-            <div className='host-van-card'>
-                <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van'/>
+            <div className='host-van-detail-card'>
+                <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van-detail-image'/>
                 <span className={`van-type ${hostVan.type} host-van-type`}>{hostVan.type}</span>
-                <div className='host-van-card-inner'>
-                    <h3 className='host-van-name'>{hostVan.name}</h3>
+                <div className='host-van-detail-card-inner'>
+                    <h2 className='host-van-name'>{hostVan.name}</h2>
                     <span className='host-van-price'>
                         ${hostVan.price}
                         <span className='day-text'>/day</span>
@@ -32,32 +29,28 @@ export default function HostVanDetail() {
                 </div>
             </div>
 
-            <div className='host-van-content'>
-                <nav className='host-van-detail-nav'>
-                    <NavLink
-                    to='.'
-                    end
-                    className={({isActive}) => isActive ? 'active-link' : null}
-                    >Details
-                    </NavLink>
+            <nav className='host-van-detail-nav'>
+                <NavLink
+                to='.'
+                end
+                className={({isActive}) => isActive ? 'active-link' : null}
+                >Details
+                </NavLink>
 
-                    <NavLink
-                    to='pricing'
-                    className={({isActive}) => isActive ? 'active-link' : null}
-                    >Pricing
-                    </NavLink>
-                    
-                    <NavLink
-                    to='photo'
-                    className={({isActive}) => isActive ? 'active-link' : null}
-                    >Photos
-                    </NavLink>
+                <NavLink
+                to='pricing'
+                className={({isActive}) => isActive ? 'active-link' : null}
+                >Pricing
+                </NavLink>
+                
+                <NavLink
+                to='photo'
+                className={({isActive}) => isActive ? 'active-link' : null}
+                >Photos
+                </NavLink>
+            </nav>
 
-                    
-                </nav>
-                <Outlet context={{hostVan}} />
-            </div>
-        </section>
+            <Outlet context={{hostVan}} />
         </>
     )
 }

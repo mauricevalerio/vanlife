@@ -4,9 +4,9 @@ export default function HostVanPricing() {
     const {hostVan} = useOutletContext()
 
     return (
-        <p className='van-price'>
-            <span className='van-price-inner'>${hostVan.price}
-            </span>/day
-        </p>
+        <span className='host-van-price'>
+            ${hostVan.price}
+            <span className='day-text'>/day</span>
+        </span>
     )
 }
