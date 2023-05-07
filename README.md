@@ -23,3 +23,4 @@ The interesting new thing I've learned is how to pass and use custom hooks outsi
 Both projects were different, Scrimba's approach was to use the Data Layer API offered by React Router such as using the Form component, action and loader functions while MERN Auth tutorial just uses the basics of React Router and handle the rest with React hooks.
 
 ## Future Improvements
+ - Add the option to toggle visibility of vans (Public & Private)

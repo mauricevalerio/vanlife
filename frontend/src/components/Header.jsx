@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom'
-import { AuthContext } from '../context/authContext'
+import { AuthContext } from '../context/AuthContext'
 import { useContext } from 'react'
 import useLogout from '../hooks/useLogout'
 
@@ -18,17 +18,16 @@ export default function Header() {
                 >Host
                 </NavLink>}
   
+                <NavLink 
+                to='vans'
+                className={({isActive}) => isActive ? 'active-link' : null}
+                >Vans
+                </NavLink>
                 
                 <NavLink 
                 to='about'
                 className={({isActive}) => isActive ? 'active-link' : null}
                 >About
-                </NavLink>
-                
-                <NavLink 
-                to='vans'
-                className={({isActive}) => isActive ? 'active-link' : null}
-                >Vans
                 </NavLink>
 
                 {!user && <NavLink

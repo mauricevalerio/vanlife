@@ -261,6 +261,10 @@ section.host-home {
   padding: 0.5em;
 }
 
+div.trash-container {
+  position: relative;
+}
+
 div.host-van-cards-container {
   display: flex;
   flex-wrap: wrap;
@@ -284,6 +288,15 @@ div.host-van-card {
 div.host-van-card-inner {
   display: flex;
   flex-direction: column;
+}
+
+img.trash-icon {
+  position: absolute;
+  width: 15px;
+  top: 0.5em;
+  right: 0.5em;
+  cursor: pointer;
+  z-index: 9999;
 }
 
 /******************* HOST VAN DETAILS ******************/

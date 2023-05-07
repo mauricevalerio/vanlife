@@ -28,11 +28,12 @@ import useLogin from './hooks/useLogin'
 import useVans from './hooks/useVans'
 import useHostVans from './hooks/useHostVans'
 import { useContext } from 'react'
-import { AuthContext } from './context/authContext'
+import { AuthContext } from './context/AuthContext'
 
 
 export default function App() {
-  const { user } = useContext(AuthContext)
+  const {user} = useContext(AuthContext)
+ 
   const { register } = useRegister()
   const { login } = useLogin()
   const { getVans } = useVans()

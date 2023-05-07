@@ -48,9 +48,15 @@ const updateHostVan = async (req, res) => {
 
 // DELETE - /api/host/vans/:id
 const deleteHostVan = async (req, res) => {
-    res.status(200).json({
-        message: `Delete host van ${req.params.id}`
-    })
+    try {
+        const van = await Van.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            message: `Deleted van ${van.name}`
+        })
+    } catch (e) {
+        next(e)
+    }
+
 }
 
 module.exports = {
