@@ -276,13 +276,13 @@ div.host-van-card {
   background: #FFF;
   border-radius: 5px;
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1em;
+
 }
 
 .host-van-image {
-  width: 50%;
+  max-width: 250px;
 }
 
 div.host-van-card-inner {
