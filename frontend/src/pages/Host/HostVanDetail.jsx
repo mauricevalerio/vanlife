@@ -9,28 +9,31 @@ export default function HostVanDetail() {
     const hostVan = useLoaderData()
     
     return (
-        <section className='van-detail'>
-            <Link
-            to='/host'
-            relative='path'
-            className='back-button'>
-            &larr; <span>Back to all vans</span>
-            </Link>
+        <>
+        <Link
+        to='/host'
+        relative='path'
+        className='back-button'>
+        &larr; <span>Back to all vans</span>
+        </Link>
 
-            <div className='host-van-detail-inner'>
-                <div className='host-van-card'>
-                    <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van'/>
-                    <span className={`van-type ${hostVan.type} host-van-type`}>{hostVan.type}</span>
-                    <div className='host-van-card-inner'>
-                        <h3 className='host-van-name'>{hostVan.name}</h3>
-                        <span className='host-van-price'>
-                            ${hostVan.price}
-                            <span className='day-text'>/day</span>
-                        </span>
-                    </div>
+        
+        <section className='host-van-detail'>
+
+            <div className='host-van-card'>
+                <img src={hostVan.imageUrl} alt={`Host Van Image of ${hostVan.name}`} className='host-van'/>
+                <span className={`van-type ${hostVan.type} host-van-type`}>{hostVan.type}</span>
+                <div className='host-van-card-inner'>
+                    <h3 className='host-van-name'>{hostVan.name}</h3>
+                    <span className='host-van-price'>
+                        ${hostVan.price}
+                        <span className='day-text'>/day</span>
+                    </span>
                 </div>
+            </div>
 
-                <nav>
+            <div className='host-van-content'>
+                <nav className='host-van-detail-nav'>
                     <NavLink
                     to='.'
                     end
@@ -49,12 +52,12 @@ export default function HostVanDetail() {
                     className={({isActive}) => isActive ? 'active-link' : null}
                     >Photos
                     </NavLink>
-                </nav>
 
-                <Outlet 
-                context={{hostVan}}
-                />
+                    
+                </nav>
+                <Outlet context={{hostVan}} />
             </div>
         </section>
+        </>
     )
 }

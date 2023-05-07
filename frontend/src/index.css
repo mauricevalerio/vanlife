@@ -217,8 +217,18 @@ section.host-home {
 }
 
 @media(width >=574px) {
-  div.host-van-detail-inner {
+  section.host-van-detail {
     display: flex;
+    gap: 1em;
+  }
+
+  .host-van-card,
+  .host-van-content {
+    flex: 1;
+  }
+
+  .host-van-detail-nav {
+    margin-left: unset;
   }
 }
 
@@ -226,6 +236,7 @@ div.host-van-cards-container {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
+  padding: 1em 0;
 }
 
 div.host-van-card {
