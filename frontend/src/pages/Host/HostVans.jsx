@@ -1,7 +1,8 @@
-import { Link, useLoaderData, useNavigate } from 'react-router-dom'
+import { Link, useLoaderData } from 'react-router-dom'
 import TrashIcon from '../../assets/trash.svg'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { AuthContext } from '../../context/AuthContext'
+import { VanContext } from '../../context/VanContext'
 
 export async function loader(user, getHostVans) {
     if (!user) return redirect("/login?message=You must login first")
@@ -10,9 +11,13 @@ export async function loader(user, getHostVans) {
 
 export default function HostVans() {
     const hostVanList = useLoaderData()
-    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
+    const { vans, dispatch } = useContext(VanContext)
     
+    useEffect(() => {
+        dispatch({type: 'SET_VANS', payload: hostVanList})
+    }, [])
+
     async function handleDelete(id) {
         try {
             const response = await fetch(`/api/host/vans/${id}`, {
@@ -24,15 +29,13 @@ export default function HostVans() {
             const json = await response.json()
             
             if (!response.ok) throw json.message
-            
-            navigate('/host')
-
+            dispatch({type: 'DELETE_VANS', payload: json})
         } catch (e) {
             return e
         }
     }
     
-    const hostVanElements = hostVanList.map(hostVan => 
+    const hostVanElements = (vans ? vans : hostVanList).map(hostVan => 
         <div className='trash-container' key={hostVan._id}>
             <Link
             to={`vans/${hostVan._id}`}

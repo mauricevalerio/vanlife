@@ -50,9 +50,7 @@ const updateHostVan = async (req, res) => {
 const deleteHostVan = async (req, res) => {
     try {
         const van = await Van.findByIdAndDelete(req.params.id)
-        res.status(200).json({
-            message: `Deleted van ${van.name}`
-        })
+        res.status(200).json(van)
     } catch (e) {
         next(e)
     }

@@ -278,11 +278,10 @@ div.host-van-card {
   display: flex;
   align-items: center;
   gap: 1em;
-
 }
 
 .host-van-image {
-  max-width: 250px;
+  max-width: 300px;
 }
 
 div.host-van-card-inner {
